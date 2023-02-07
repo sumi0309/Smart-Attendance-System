@@ -6,12 +6,12 @@
     <title>SAS - E&TC</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="styles/app.css" />
-    <script src="scripts/app.js" defer></script>
+    <script defer src="./scripts/app.js"></script>
   </head>
   <body>
     <header class="main-header">
       <div>
-        <img`
+        <img
           id="header-logo"
           src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png?20191204131429"
         />
@@ -27,18 +27,30 @@
     </header>
     <main>
       <div class="main-flex-1">
-        <img
+        <!-- <img
+          class="input-image"
           src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-        />
-        <img
+        /> -->
+
+        <!-- <img
+          class="ouput-image"
           src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-        />
+        /> -->
+
+        <div class="image-input" id="input-image">
+          <i class="material-icons">image</i>
+          <div class="uploaded-image"></div>
+        </div>
+
+        <div class="image-output" id="output-image">
+          <i class="material-icons">image</i>
+        </div>
       </div>
       <div class="main-flex-2">
-        <button id="main-uplaod-button">
+        <button id="upload-button">
           <i class="material-icons">upload</i>
         </button>
-        <button id="main-attendance-button">
+        <button id="attendance-button">
           <i class="material-icons">groups</i>
         </button>
       </div>
