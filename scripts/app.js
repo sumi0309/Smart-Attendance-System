@@ -1,34 +1,17 @@
-const inputImage = document.getElementById("input-image");
-const outImage = document.getElementById("output-image");
-const uploadButton = document.getElementById("upload-button");
+const previewImage = document.querySelector(".preview-container");
+const outImage = document.querySelector(".output-image");
 const attendanceButton = document.getElementById("attendance-button");
+const deleteButton = document.getElementById("delete-button");
 
-// const toggleDefInputComp = () => {
-//   inputImage.classList.toggle("visible");
-// };
-
-const dislayUploadedImage = (imageSrc) => {
-  const uploadedImage = URL.createObjectURL(imageSrc);
-  const uploadImage = document.querySelector(".uploaded-image");
-  uploadImage.src = uploadedImage;
+const showPreview = (event) => {
+  if (event.target.files.length > 0) {
+    const imageFile = event.target.files[0];
+    const src = URL.createObjectURL(imageFile);
+    const preview = document.querySelector("#preview");
+    const labelTag = document.querySelector("#preview-label");
+    preview.src = src;
+    preview.style.display = "inline-block";
+    preview.style.objectFit = "contain";
+    labelTag.textContent = imageFile.name;
+  }
 };
-
-const uploadImage = () => {
-  let inputImageComp = document.createElement("input");
-  inputImageComp.type = "file";
-  inputImageComp.accept = "image/png, image/jpeg, image/jpg, image/heic";
-  inputImageComp.click();
-
-  inputImageComp.addEventListener =
-    ("change",
-    () => {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        let uploadedImage = reader.result;
-        document.querySelector(".uploaded-image").style.backgroundImage = `url(${uploadedImage})`;
-      });
-      reader.readAsDataURL(this.files[0]);
-      console.log(reader);
-    });
-};
-uploadButton.addEventListener("click", uploadImage);

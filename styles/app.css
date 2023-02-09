@@ -7,7 +7,8 @@ body {
   margin: 0;
   padding: 0;
   max-height: 100%;
-  /* width: 10px; */
+  align-items: center;
+  justify-content: center;
 }
 
 .main-header {
@@ -28,7 +29,6 @@ body {
 
 #header-text {
   color: white;
-  /* flex-grow: 2; */
 }
 
 #header-button {
@@ -54,10 +54,9 @@ body {
   width: 100%;
   margin-bottom: 1.5%;
   border: 1px rgba(62, 107, 49, 1) solid;
-  height: 250px;
+  height: 18em;
   color: rgba(62, 107, 49, 1);
   border-radius: 1rem;
-  /* margin: 1.5%; */
 }
 
 .input-image.visible {
@@ -65,27 +64,63 @@ body {
 }
 
 .main-flex-2 {
-  padding: 5% 10% 5% 10%;
+  padding: 0.5em 1em 0.5em 1em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
 }
 
-.main-flex-2 button {
-  margin-bottom: 1.5%;
-  margin: 1%;
-  padding: 6%;
+#delete-button {
+  width: 60%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
+  background-color: rgba(190, 0, 40, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
+}
+
+#upload-button {
+  width: 60%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
   background-color: rgba(62, 107, 49, 1);
   color: white;
   border: none;
-  border-radius: 100%;
+  border-radius: 2em;
 }
 
-.uploaded-image {
-  width: 100%;
-  height: 100px;
-  border: 1px black solid;
-  border-radius: 1rem;
-  background-size: cover;
+#attendance-button {
+  width: 85%;
+  margin-bottom: 1.5%;
+  margin: 0em 1em 0em 1em;
+  padding: 1em;
+  background-color: rgba(62, 107, 49, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
+  align-items: center;
+  text-align: center;
+}
+
+.image-input {
+  text-align: center;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+}
+
+#preview {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#upload {
+  display: none;
 }

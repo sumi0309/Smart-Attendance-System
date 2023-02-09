@@ -27,30 +27,34 @@
     </header>
     <main>
       <div class="main-flex-1">
-        <!-- <img
-          class="input-image"
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-        /> -->
-
-        <!-- <img
-          class="ouput-image"
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-        /> -->
-
-        <div class="image-input" id="input-image">
-          <i class="material-icons">image</i>
-          <div class="uploaded-image"></div>
+        <div class="image-input">
+            <div class="preview-container">
+              <img id="preview" />
+            </div> 
+            <label id="preview-label" for="preview">
+              <i class="material-icons">image</i>
+            </label>         
+          <input
+            id="upload"
+            type="file"
+            accept="image/png, image/jpg, image/jpeg, image/heic"
+            onchange="showPreview(event);"
+          />
         </div>
-
         <div class="image-output" id="output-image">
           <i class="material-icons">image</i>
         </div>
       </div>
       <div class="main-flex-2">
-        <button id="upload-button">
-          <i class="material-icons">upload</i>
+        <button id="delete-button">
+          <i class="material-icons">delete</i>
         </button>
-        <button id="attendance-button">
+        <button id="upload-button">
+          <label for="upload" class="material-icons">cloud_upload</label>
+        </button>
+      </div>
+      <div style="text-align: center;"">
+        <button id="attendance-button" style="display: inline-block;">
           <i class="material-icons">groups</i>
         </button>
       </div>
