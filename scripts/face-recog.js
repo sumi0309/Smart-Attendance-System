@@ -1,3 +1,7 @@
+const imageUpload = document.querySelector(".image_input");
+const imageResult = document.querySelector(".image_output");
+const labelTag = document.querySelector("#preview-label");
+
 Promise.all([
   await faceapi.loadSsdMobilenetv1Model("/models"),
   await faceapi.loadTinyFaceDetectorModel("/models"),
@@ -6,6 +10,6 @@ Promise.all([
   await faceapi.loadFaceLandmarkTinyModel("/models"),
   await faceapi.loadFaceRecognitionModel("/models"),
   await faceapi.loadFaceExpressionModel("/models"),
-]);
+]).then(start);
 
-console.log("Loaded");
+function start() {}
