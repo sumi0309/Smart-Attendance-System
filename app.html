@@ -1,69 +1,73 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAS - E&TC</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="styles/app.css" />
-    <script defer src="./scripts/face-recog.js"></script>
-    <script defer src="./scripts/app.js"></script>
-  </head>
-  <body>
-    <header class="main-header">
-      <div>
-        <img
-          id="header-logo"
-          src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png?20191204131429"
-        />
-      </div>
-      <div>
-        <p id="header-text">SAS : E&TC</p>
-      </div>
-      <div>
-        <button id="header-button">
-          <i class="material-icons">menu</i>
-        </button>
-      </div>
-    </header>
-    <main>
-      <div class="main-flex-1">
-        <div class="image-input">
-            <div class="preview-container">
-              <img id="preview" />
-            </div> 
-            <label id="preview-label" for="preview">
-              <i class="material-icons">image</i>
-            </label>         
-          <input
-            id="upload"
-            type="file"
-            accept="image/png, image/jpg, image/jpeg, image/heic"
-            onchange="showPreview(event);"
-          />
-        </div>
-        <div class="image-output" id="output-image">
-          <div class="preview-container">
-            <img id="preview" />
-          </div> 
-          <label id="output-preview-label" for="preview">
-            <i class="material-icons">image</i>
-          </label>         
-        </div>
-      </div>
-      <div class="main-flex-2">
-        <button id="delete-button">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SAS - E&TC</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" href="styles/app.css" />
+		<script defer src="./scripts/face-recog.js"></script>
+		<script defer src="./scripts/app.js"></script>
+	</head>
+	<body>
+		<div id="backdrop"></div>
+		<div class="modal-sheet">
+			<div class="modal-card">
+				<i id="warning-icon" class="material-icons">warning</i> Upload Image for Attendance
+			</div>
+		</div>
+		<header class="main-header">
+			<div>
+				<img
+					id="header-logo"
+					src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png?20191204131429"
+				/>
+			</div>
+			<div>
+				<p id="header-text">SAS : E&TC</p>
+			</div>
+			<div>
+				<button id="header-button">
+					<i class="material-icons">menu</i>
+				</button>
+			</div>
+		</header>
+		<main>
+			<div class="main-flex-1">
+				<div class="image-input">
+					<div class="preview-container">
+						<img id="preview" src="" />
+					</div>
+					<label id="preview-label" for="preview">
+						<i class="material-icons">image</i>
+					</label>
+					<input
+						id="upload"
+						type="file"
+						accept="image/png, image/jpg, image/jpeg, image/heic"
+						onchange="showPreview(event);"
+					/>
+				</div>
+				<div class="image-output" id="output-image">
+					<div class="preview-container">
+						<img id="preview" />
+					</div>
+					<label id="output-preview-label" for="preview">
+						<i class="material-icons">image</i>
+					</label>
+				</div>
+			</div>
+			<div class="main-flex-2">
+				<!-- <button id="delete-button">
           <i class="material-icons">delete</i>
-        </button>
-        <button id="upload-button">
-          <label for="upload" class="material-icons">cloud_upload</label>
-        </button>
-      </div>
-      <div style="text-align: center;"">
-        <button id="attendance-button" style="display: inline-block;">
-          <i class="material-icons">groups</i>
-        </button>
-      </div>
-    </main>
-  </body>
+        </button>  -->
+				<button id="upload-button">
+					<label for="upload" class="material-icons">cloud_upload</label>
+				</button>
+				<button id="attendance-button" style="display: inline-block">
+					<i class="material-icons">groups</i>
+				</button>
+			</div>
+		</main>
+	</body>
 </html>
