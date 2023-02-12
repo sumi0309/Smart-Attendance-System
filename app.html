@@ -6,8 +6,9 @@
 		<title>SAS - E&TC</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link rel="stylesheet" href="styles/app.css" />
-		<script defer src="./scripts/face-recog.js"></script>
+		<script defer type="module" src="./scripts/face-api.min.js"></script>
 		<script defer src="./scripts/app.js"></script>
+		<script defer src="./scripts/face-recog.js"></script>
 	</head>
 	<body>
 		<div id="backdrop"></div>
@@ -35,17 +36,17 @@
 		<main>
 			<div class="main-flex-1">
 				<div class="image-input">
-					<div class="preview-container">
-						<img id="preview" />
+					<div class="input-preview-container">
+						<img id="input-preview" />
 					</div>
-					<label id="preview-label" for="preview">
+					<label id="input-preview-label" for="preview">
 						<i class="material-icons">image</i>
 					</label>
 					<input id="upload" type="file" accept="image/png, image/jpg, image/jpeg, image/heic" />
 				</div>
-				<div class="image-output" id="output-image">
-					<div class="preview-container">
-						<img id="preview" />
+				<div class="image-output">
+					<div class="output-preview-container">
+						<img id="output-preview" />
 					</div>
 					<label id="output-preview-label" for="preview">
 						<i class="material-icons">image</i>
@@ -53,9 +54,6 @@
 				</div>
 			</div>
 			<div class="main-flex-2">
-				<!-- <button id="delete-button">
-          <i class="material-icons">delete</i>
-        </button>  -->
 				<button id="upload-button">
 					<label for="upload" class="material-icons">cloud_upload</label>
 				</button>
