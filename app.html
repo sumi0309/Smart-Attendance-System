@@ -6,9 +6,17 @@
 		<title>SAS - E&TC</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link rel="stylesheet" href="styles/app.css" />
-		<script src="scripts/app.js" defer></script>
+		<script defer type="module" src="./scripts/face-api.min.js"></script>
+		<script defer src="./scripts/app.js"></script>
+		<script defer src="./scripts/face-recog.js"></script>
 	</head>
 	<body>
+		<div id="backdrop"></div>
+		<div class="modal-sheet">
+			<div class="modal-card">
+				<i id="warning-icon" class="material-icons">warning</i> Upload Image for Attendance
+			</div>
+		</div>
 		<header class="main-header">
 			<div>
 				<img
@@ -27,18 +35,29 @@
 		</header>
 		<main>
 			<div class="main-flex-1">
-				<img
-					src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-				/>
-				<img
-					src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2xhc3Nyb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1296&q=60"
-				/>
+				<div class="image-input">
+					<div class="input-preview-container">
+						<img id="input-preview" />
+					</div>
+					<label id="input-preview-label" for="preview">
+						<i class="material-icons">image</i>
+					</label>
+					<input id="upload" type="file" accept="image/png, image/jpg, image/jpeg, image/heic" />
+				</div>
+				<div class="image-output">
+					<div class="output-preview-container">
+						<img id="output-preview" />
+					</div>
+					<label id="output-preview-label" for="preview">
+						<i class="material-icons">image</i>
+					</label>
+				</div>
 			</div>
 			<div class="main-flex-2">
-				<button id="main-uplaod-button">
-					<i class="material-icons">upload</i>
+				<button id="upload-button">
+					<label for="upload" class="material-icons">cloud_upload</label>
 				</button>
-				<button id="main-attendance-button">
+				<button id="attendance-button" style="display: inline-block">
 					<i class="material-icons">groups</i>
 				</button>
 			</div>
