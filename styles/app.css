@@ -1,209 +1,209 @@
 html {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	max-height: 100%;
-	align-items: center;
-	justify-content: center;
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 #backdrop {
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.75);
-	z-index: 10;
-	pointer-events: none;
-	display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  pointer-events: none;
+  display: none;
 }
 
 #backdrop.visible {
-	display: block;
-	pointer-events: all;
+  display: block;
+  pointer-events: all;
 }
 
 .modal-sheet {
-	display: none;
-	position: fixed;
-	z-index: 100;
-	width: 90%;
-	height: 10%;
-	top: 45%;
-	left: 5%;
-	background: white;
-	border-radius: 2em;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 90%;
+  height: 10%;
+  top: 45%;
+  left: 5%;
+  background: white;
+  border-radius: 2em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
 .modal-card {
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	padding: 0em 2em 0em 2em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0em 2em 0em 2em;
 }
 
 .modal-sheet.visible {
-	display: block;
-	animation: fade-slide-in 0.3s ease-out forwards;
+  display: block;
+  animation: fade-slide-in 0.3s ease-out forwards;
 }
 
 #warning-icon {
-	color: rgba(46, 108, 54, 1);
-	padding: 0.5em 0.5em 0.5em 0.5em;
+  color: rgba(46, 108, 54, 1);
+  padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
 .main-header {
-	height: 10%;
-	width: auto;
-	display: flex;
-	background-color: rgba(46, 108, 54, 1);
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.5em 0.5em 0.5em 0.5em;
+  height: 10%;
+  width: auto;
+  display: flex;
+  background-color: rgba(46, 108, 54, 1);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
 #header-logo {
-	height: 3em;
-	border: 0.1px white solid;
-	border-radius: 2em;
+  height: 3em;
+  border: 0.1px white solid;
+  border-radius: 2em;
 }
 
 #header-text {
-	color: white;
+  color: white;
 }
 
 #header-button {
-	background-color: rgba(46, 108, 54, 1);
-	border: 0;
-	color: white;
+  background-color: rgba(46, 108, 54, 1);
+  border: 0;
+  color: white;
 }
 
 .main-flex-1 {
-	padding: 1.5%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+  padding: 1.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .image-input {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-bottom: 1.5%;
-	padding: 0.75%;
-	border: 1px rgba(46, 108, 54, 1) solid;
-	height: 100%;
-	color: rgba(46, 108, 54, 1);
-	border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
 }
 
 .image-input.visible {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 1.5%;
-	padding: 0.75%;
-	border: 1px rgba(46, 108, 54, 1) solid;
-	height: 100%;
-	width: 100%;
-	color: rgba(46, 108, 54, 1);
-	border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  width: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
 }
 
 .input-preview-container.visible {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 90%;
-	height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
 }
 
 #input-preview {
-	display: none;
-	max-width: 100%;
-	max-height: 100%;
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .image-output {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-bottom: 1.5%;
-	padding: 0.75%;
-	border: 1px rgba(46, 108, 54, 1) solid;
-	height: 100%;
-	color: rgba(46, 108, 54, 1);
-	border-radius: 1rem;
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+  position: relative;
 }
 
 .image-output.visible {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 1.5%;
-	padding: 0.75%;
-	border: 1px rgba(46, 108, 54, 1) solid;
-	height: 100%;
-	width: 100%;
-	color: rgba(46, 108, 54, 1);
-	border-radius: 1rem;
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  width: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+  position: relative;
 }
 
 .output-preview-container.visible {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 90%;
-	height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
 }
 
 #output-preview {
-	display: none;
-	max-width: 100%;
-	max-height: 100%;
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 canvas {
-	position: absolute;
-	top: 0.5%;
-	left: 0.8%;
+  position: absolute;
+  top: 0.5%;
+  left: 0.8%;
 }
 
 .main-flex-2 {
-	padding: 0.5em 1em 0.5em 1em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
+  padding: 0.5em 1em 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .main-flex-2 button {
-	width: 50%;
-	margin: 0.5em 1em 0.5em 1em;
-	padding: 1em;
-	background-color: rgba(46, 108, 54, 1);
-	color: white;
-	border: none;
-	border-radius: 2em;
+  width: 50%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
+  background-color: rgba(46, 108, 54, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
 }
 
 #upload {
-	display: none;
+  display: none;
 }
