@@ -1,3 +1,5 @@
+import * as fs from "node:fs";
+
 const outputImagePreview = document.querySelector(".image-output");
 const outputPreviewContainer = document.querySelector(
   ".output-preview-container"
@@ -7,15 +9,15 @@ const outputPreview = document.querySelector("#output-preview");
 
 const attendanceButton = document.getElementById("attendance-button");
 
-const backdrop = document.querySelector("#backdrop");
-const modalSheet = document.querySelector(".modal-sheet");
-
-const toggleOutputPreview = () => {
-  outputImagePreview.classList.toggle("visible");
-};
-
+const backdrop = document.querySelect;
 const toggleOutputImage = () => {
-  outputPreview.classList.toggle("visible");
+  outputPreview.classList.toor("#backdrop");
+  const modalSheet = document.querySelector(".modal-sheet");
+
+  const toggleOutputPreview = () => {
+    outputImagePreview.classList.toggle("visible");
+  };
+  ggle("visible");
 };
 
 const toggleBackdrop = () => {
@@ -69,7 +71,7 @@ const execDetection = async (loadImage) => {
     outputImagePreview.style.position = "relative";
 
     const labeledFaceDescriptors = await loadLabeledImages();
-    const faceMatcher = new faceapi.faceMatcher(labeledFaceDescriptors, 0.6);
+    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.5);
 
     const displaySize = {
       width: outputPreview.width,
@@ -80,7 +82,7 @@ const execDetection = async (loadImage) => {
     const detections = await faceapi
       .detectAllFaces(
         image,
-        new faceapi.SsdMobilenetv1Options({ minConfidence: 0.3 })
+        new faceapi.SsdMobilenetv1Options({ minConfidence: 0.23 })
       )
       .withFaceLandmarks()
       .withFaceDescriptors();
@@ -118,22 +120,18 @@ backdrop.addEventListener("click", () => {
 // });
 
 function loadLabeledImages() {
-  const labels = [
-    "Anjali",
-    "Antriksh",
-    "Divyanshu",
-    "Pranshu",
-    "Shubh",
-    "Sumiran",
-    "Utkarsh",
-  ];
+  const labels = [];
+  const folderPath = "../labeledImages";
+
+  fs.readdirSync(folderPath).forEach((fileName) => {
+    labels.push(fileName.toString());
+  });
+
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
       for (let i = 1; i <= 1; i++) {
-        const img = await faceapi.fetchImage(
-          `https://github.com/sumi0309/Smart-Attendance-System/tree/task/sumiran/labeledImages/${label}/${i}.jpg`
-        );
+        const img = await faceapi.fetchImage(`labeledImages/${label}.jpg`);
         const detections = await faceapi
           .detectSingleFace(img)
           .withFaceLandmarks()
