@@ -1,5 +1,3 @@
-import * as fs from "node:fs";
-
 const outputImagePreview = document.querySelector(".image-output");
 const outputPreviewContainer = document.querySelector(
   ".output-preview-container"
@@ -9,15 +7,16 @@ const outputPreview = document.querySelector("#output-preview");
 
 const attendanceButton = document.getElementById("attendance-button");
 
-const backdrop = document.querySelect;
-const toggleOutputImage = () => {
-  outputPreview.classList.toor("#backdrop");
-  const modalSheet = document.querySelector(".modal-sheet");
+const backdrop = document.querySelector("#backdrop");
 
-  const toggleOutputPreview = () => {
-    outputImagePreview.classList.toggle("visible");
-  };
-  ggle("visible");
+const modalSheet = document.querySelector(".modal-sheet");
+
+const toggleOutputImage = () => {
+  outputPreview.classList.toggle("visible");
+};
+
+const toggleOutputPreview = () => {
+  outputImagePreview.classList.toggle("visible");
 };
 
 const toggleBackdrop = () => {
@@ -82,7 +81,7 @@ const execDetection = async (loadImage) => {
     const detections = await faceapi
       .detectAllFaces(
         image,
-        new faceapi.SsdMobilenetv1Options({ minConfidence: 0.23 })
+        new faceapi.SsdMobilenetv1Options({ minConfidence: 0.5 })
       )
       .withFaceLandmarks()
       .withFaceDescriptors();
@@ -120,12 +119,14 @@ backdrop.addEventListener("click", () => {
 // });
 
 function loadLabeledImages() {
-  const labels = [];
-  const folderPath = "../labeledImages";
+  const labels = ["19T7158_Sumiran Jaiswal", "19T7109_Antriksh Tyagi"];
+  //   const folderPath = "../labeledImages";
 
-  fs.readdirSync(folderPath).forEach((fileName) => {
-    labels.push(fileName.toString());
-  });
+  //   fs.readdirSync(folderPath).forEach((fileName) => {
+  //     labels.push(fileName.toString);
+  //   });
+
+  //   console.log(labels);
 
   return Promise.all(
     labels.map(async (label) => {
