@@ -34,6 +34,7 @@ const showInputPreview = (event) => {
     // localStorage.setItem("latest-image", reader.result);
     // const latestImage = localStorage.getItem("latest-image");
     // inputPreview.src = latestImage;
+    console.clear();
     inputPreview.src = reader.result;
     execDetection(reader.result);
     showOutputPreview(reader.result);
