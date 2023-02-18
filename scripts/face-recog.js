@@ -64,7 +64,6 @@ const execDetection = async (loadImage) => {
     image = await faceapi.bufferToImage(imageBLob);
 
     canvas = faceapi.createCanvasFromMedia(image);
-    outputPreviewContainer.append(canvas);
     outputImagePreview.style.justifyContent = "start";
     outputImagePreview.style.alignItems = "center";
     outputImagePreview.style.position = "relative";
@@ -101,6 +100,7 @@ const execDetection = async (loadImage) => {
       console.log(result.toString());
     });
   }
+  outputPreviewContainer.append(canvas);
 };
 
 backdrop.addEventListener("click", () => {
