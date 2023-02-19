@@ -7,12 +7,20 @@ const outputPreview = document.querySelector("#output-preview");
 
 const attendanceButton = document.getElementById("attendance-button");
 
+const attendanceList = document.getElementById("aL");
+
+const aLDiv = document.querySelector("#aLContainer");
+
 const backdrop = document.querySelector("#backdrop");
 
 const modalSheet = document.querySelector(".modal-sheet");
 
 const toggleOutputImage = () => {
   outputPreview.classList.toggle("visible");
+};
+
+const toogleAttendanceList = () => {
+  aLDiv.classList.toggle("visible");
 };
 
 const toggleOutputPreview = () => {
@@ -69,7 +77,7 @@ const execDetection = async (loadImage) => {
     outputImagePreview.style.position = "relative";
 
     const labeledFaceDescriptors = await loadLabeledImages();
-    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.65);
+    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.53);
 
     const displaySize = {
       width: outputPreview.width,
@@ -97,7 +105,9 @@ const execDetection = async (loadImage) => {
         label: result.toString(),
       });
       drawBox.draw(canvas);
-      console.log(result.toString());
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(result.toString()));
+      attendanceList.appendChild(li);
     });
   }
   outputPreviewContainer.append(canvas);
@@ -108,16 +118,17 @@ backdrop.addEventListener("click", () => {
   toggleModalSheet();
 });
 
-// attendanceButton.addEventListener("click", () => {
-//   const latestImage = localStorage.getItem("latest-image");
-//   if (latestImage === null) {
-//     toggleBackdrop();
-//     toggleModalSheet();
-//   } else {
-//     execDetection(latestImage);
-//     showOutputPreview(latestImage);
-//   }
-// });
+attendanceButton.addEventListener("click", () => {
+  // const latestImage = localStorage.getItem("latest-image");
+  // if (latestImage === null) {
+  //   toggleBackdrop();
+  //   toggleModalSheet();
+  // } else {
+  //   execDetection(latestImage);
+  //   showOutputPreview(latestImage);
+  // }
+  toogleAttendanceList();
+});
 
 function loadLabeledImages() {
   const labels = [
