@@ -2,6 +2,8 @@ const inputImagePreview = document.querySelector(".image-input");
 const inputPreviewContainer = document.querySelector(
   ".input-preview-container"
 );
+const attendanceBtn = document.querySelector("#upload-button");
+const attendanceList = document.getElementById("aL");
 const inputLabelTag = document.querySelector("#input-preview-label");
 const inputPreview = document.querySelector("#input-preview");
 const uploadAction = document.querySelector("#upload");
@@ -26,6 +28,7 @@ const toggleInputImage = () => {
 };
 
 const showInputPreview = (event) => {
+  attendanceBtn.style = attendanceList.innerHTML = "";
   const imageFile = event.target.files[0];
   const reader = new FileReader();
 

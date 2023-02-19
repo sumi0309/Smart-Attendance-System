@@ -7,8 +7,6 @@ const outputPreview = document.querySelector("#output-preview");
 
 const attendanceButton = document.getElementById("attendance-button");
 
-const attendanceList = document.getElementById("aL");
-
 const aLDiv = document.querySelector("#aLContainer");
 
 const backdrop = document.querySelector("#backdrop");
@@ -99,16 +97,26 @@ const execDetection = async (loadImage) => {
       faceMatcher.findBestMatch(d.descriptor)
     );
 
+    const sortedList = [];
+
+    results.forEach((student) => {
+      sortedList.push(student.toString());
+    });
+
+    sortedList.sort();
+
     results.forEach((result, i) => {
       const box = resizeDetections[i].detection.box;
       const drawBox = new faceapi.draw.DrawBox(box, {
         label: result.toString(),
       });
       drawBox.draw(canvas);
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(result.toString()));
-      attendanceList.appendChild(li);
     });
+    for (let i = 0; i < sortedList.length; i++) {
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(sortedList[i]));
+      attendanceList.appendChild(li);
+    }
   }
   outputPreviewContainer.append(canvas);
 };

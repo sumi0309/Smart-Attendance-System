@@ -86,7 +86,7 @@ body {
   color: white;
 }
 
-.main-flex-1 {
+.main-flex-1, .main-flex-3 {
   padding: 1.5%;
   display: flex;
   justify-content: center;
@@ -206,4 +206,13 @@ canvas {
 
 #upload {
   display: none;
+}
+
+
+.main-flex-3.visible {
+  display:none;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
 }
