@@ -38,6 +38,7 @@ const showInputPreview = (event) => {
     // const latestImage = localStorage.getItem("latest-image");
     // inputPreview.src = latestImage;
     console.clear();
+    outputLabelTag.textContent = "";
     inputPreview.src = reader.result;
     execDetection(reader.result);
     showOutputPreview(reader.result);
@@ -55,5 +56,6 @@ const showInputPreview = (event) => {
 
 uploadAction.addEventListener("change", (event) => {
   localStorage.clear();
+
   showInputPreview(event);
 });

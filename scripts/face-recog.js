@@ -8,6 +8,7 @@ const outputPreview = document.querySelector("#output-preview");
 const attendanceButton = document.getElementById("attendance-button");
 
 const aLDiv = document.querySelector("#aLContainer");
+const aL = document.getElementById("aL");
 
 const backdrop = document.querySelector("#backdrop");
 
@@ -135,7 +136,10 @@ attendanceButton.addEventListener("click", () => {
   //   execDetection(latestImage);
   //   showOutputPreview(latestImage);
   // }
-  toogleAttendanceList();
+  if (document.getElementById("aL").childNodes.length === 1) {
+    toggleBackdrop();
+    toggleModalSheet();
+  } else toogleAttendanceList();
 });
 
 function loadLabeledImages() {
@@ -179,6 +183,7 @@ function loadLabeledImages() {
     "20T7182_Jayesh Mulchandani",
     "20T7184_Nisha Chilgar",
   ];
+
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
