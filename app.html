@@ -25,11 +25,12 @@
 				/>
 			</div>
 			<div>
-				<p id="header-text">SAS : E&TC</p>
+				<h3 id="header-text" class="head1">Smart Attendance Portal <br></h3>
+				<h4 class="head2">IET-DAVV &nbsp E&TC</h4>
 			</div>
 			<div>
-				<button id="header-button">
-					<i class="material-icons">menu</i>
+				<button id="header-button" onclick="window.location='app.html';">
+					<i class="material-icons" id="headerBtn">refresh</i>
 				</button>
 			</div>
 		</header>
@@ -46,7 +47,7 @@
 				</div>
 				<div class="image-output">
 					<div class="output-preview-container">
-						<img id="output-preview" />
+						<img id="output-preview" >
 					</div>
 					<label id="output-preview-label" for="preview">
 						<i class="material-icons">image</i>
@@ -54,16 +55,16 @@
 				</div>
 			</div>
 			<div class="main-flex-2">
-				<button id="upload-button">
-					<label for="upload" class="material-icons">cloud_upload</label>
-				</button>
+					<button id="upload-button">
+					<label for ="upload" class="material-icons" >cloud_upload</label>
+					</button>	
 				<button id="attendance-button" style="display: inline-block">
 					<i class="material-icons">groups</i>
 				</button>
 			</div>
 		</main>
-		<div class="main-flex-3">
-			<ol class="aL"></ol>
+		<div id="aLContainer" class="main-flex-3">
+			<ol id="aL"></ol>
 		</div>
 	</body>
 </html>
