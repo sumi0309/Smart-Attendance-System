@@ -56,6 +56,5 @@ const showInputPreview = (event) => {
 
 uploadAction.addEventListener("change", (event) => {
   localStorage.clear();
-
   showInputPreview(event);
 });
