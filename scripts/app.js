@@ -28,17 +28,11 @@ const toggleInputImage = () => {
 };
 
 const showInputPreview = (event) => {
-  attendanceBtn.style = attendanceList.innerHTML = "";
   const imageFile = event.target.files[0];
   const reader = new FileReader();
 
   reader.readAsDataURL(imageFile);
   reader.addEventListener("load", () => {
-    // localStorage.setItem("latest-image", reader.result);
-    // const latestImage = localStorage.getItem("latest-image");
-    // inputPreview.src = latestImage;
-    console.clear();
-    outputLabelTag.textContent = "";
     inputPreview.src = reader.result;
     execDetection(reader.result);
     showOutputPreview(reader.result);
@@ -55,6 +49,7 @@ const showInputPreview = (event) => {
 };
 
 uploadAction.addEventListener("change", (event) => {
-  localStorage.clear();
+  attendanceList.innerHTML = "";
+  outputLabelTag.textContent = "";
   showInputPreview(event);
 });

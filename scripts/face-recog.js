@@ -128,14 +128,6 @@ backdrop.addEventListener("click", () => {
 });
 
 attendanceButton.addEventListener("click", () => {
-  // const latestImage = localStorage.getItem("latest-image");
-  // if (latestImage === null) {
-  //   toggleBackdrop();
-  //   toggleModalSheet();
-  // } else {
-  //   execDetection(latestImage);
-  //   showOutputPreview(latestImage);
-  // }
   if (document.getElementById("aL").childNodes.length === 1) {
     toggleBackdrop();
     toggleModalSheet();
@@ -182,6 +174,7 @@ function loadLabeledImages() {
     "19T7184_Nayan Bargal",
     "20T7182_Jayesh Mulchandani",
     "20T7184_Nisha Chilgar",
+    "19T7010_Anjali Phadke",
   ];
 
   return Promise.all(

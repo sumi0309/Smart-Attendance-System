@@ -83,19 +83,20 @@ body {
 }
 
 #header-text {
-  color: whitesmoke;
+  color: white;
   font-family:sans-serif;
   font-style: normal;
+  margin-bottom: 0.4em;
 }
 
 #header-button {
   background-color: rgba(46, 108, 54, 1);
   border: 0;
-  color:whitesmoke;
+  color:white;
   margin-right: 10px;
 }
 
-.main-flex-1, .main-flex-3 {
+.main-flex-1, .main-flex-3.visible {
   padding: 1.5%;
   display: flex;
   justify-content: center;
@@ -222,17 +223,15 @@ canvas {
 }
 
 
-.main-flex-3.visible {
+.main-flex-3 {
   display:none;
-  flex-direction: column;
-  justify-content: center;
-  width: 90%;
-  height: 90%;
+  
 }
 
 .head2{
   text-align: center;
-  color:whitesmoke;
-  margin-top: 10;
+  color:white;
+  margin-top: 0.5em;
+  margin-bottom: 1em;;
   font-style:normal;
 }
