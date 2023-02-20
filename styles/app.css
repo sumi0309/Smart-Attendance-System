@@ -89,6 +89,14 @@ body {
   margin-bottom: 0.4em;
 }
 
+.head2{
+  text-align: center;
+  color:white;
+  margin-top: 0.5em;
+  margin-bottom: 1em;;
+  font-style:normal;
+}
+
 #header-button {
   background-color: rgba(46, 108, 54, 1);
   border: 0;
@@ -222,16 +230,6 @@ canvas {
   display: none;
 }
 
-
 .main-flex-3 {
   display:none;
-  
-}
-
-.head2{
-  text-align: center;
-  color:white;
-  margin-top: 0.5em;
-  margin-bottom: 1em;;
-  font-style:normal;
 }

@@ -1,17 +1,11 @@
 const outputImagePreview = document.querySelector(".image-output");
-const outputPreviewContainer = document.querySelector(
-  ".output-preview-container"
-);
+const outputPreviewContainer = document.querySelector(".output-preview-container");
 const outputLabelTag = document.querySelector("#output-preview-label");
 const outputPreview = document.querySelector("#output-preview");
-
 const attendanceButton = document.getElementById("attendance-button");
-
 const aLDiv = document.querySelector("#aLContainer");
 const aL = document.getElementById("aL");
-
 const backdrop = document.querySelector("#backdrop");
-
 const modalSheet = document.querySelector(".modal-sheet");
 
 const toggleOutputImage = () => {
@@ -24,6 +18,14 @@ const toogleAttendanceList = () => {
 
 const toggleOutputPreview = () => {
   outputImagePreview.classList.toggle("visible");
+};
+
+const toggleAttendanceList = () => {
+	aLDiv.classList.toggle("visible");
+};
+
+const toggleOutputPreview = () => {
+	outputImagePreview.classList.toggle("visible");
 };
 
 const toggleBackdrop = () => {
