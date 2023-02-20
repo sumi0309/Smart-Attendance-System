@@ -207,3 +207,15 @@ canvas {
 #upload {
 	display: none;
 }
+
+.main-flex-3.visible {
+	padding: 1.5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.main-flex-3 {
+	display: none;
+}

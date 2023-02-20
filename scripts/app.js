@@ -29,9 +29,9 @@ const showInputPreview = (event) => {
 
 	reader.readAsDataURL(imageFile);
 	reader.addEventListener("load", () => {
-		localStorage.setItem("latest-image", reader.result);
-		const latestImage = localStorage.getItem("latest-image");
-		inputPreview.src = latestImage;
+		inputPreview.src = reader.result;
+		execDetection(reader.result);
+		showOutputPreview(reader.result);
 	});
 
 	toggleInputImage();
@@ -45,6 +45,15 @@ const showInputPreview = (event) => {
 };
 
 uploadAction.addEventListener("change", (event) => {
-	localStorage.clear();
+	const targetDiv = document.querySelector(".al");
+	const getLength = targetDiv.children.length;
+	console.log(getLength);
+	if (getLength > 0) {
+		for (let i = 0; i < getLength; i++) {
+			const child = targetDiv.children[0];
+			targetDiv.removeChild(child);
+		}
+	}
 	showInputPreview(event);
+	toggleAttendanceList();
 });
