@@ -128,7 +128,7 @@ backdrop.addEventListener("click", () => {
 });
 
 attendanceButton.addEventListener("click", () => {
-  if (document.getElementById("aL").childNodes.length === 1) {
+  if (document.getElementById("aL").childNodes.length === 0) {
     toggleBackdrop();
     toggleModalSheet();
   } else toogleAttendanceList();
@@ -142,7 +142,7 @@ function loadLabeledImages() {
     "19T7109_Antriksh Tyagi",
     "19T7110_Anubhav Chahar",
     "19T7112_Ayush Agrawal",
-    "19T7113_Bharti Baghel",
+    // "19T7113_Bharti Baghel",
     "19T7114_Bhumika Modh",
     // "19T7115_Daniya Afaq",
     "19T7117_Deepesh Aswani",
@@ -150,7 +150,7 @@ function loadLabeledImages() {
     "19T7121_Gourav Dehariya",
     "19T7122_Hitesh Mani",
     "19T7127_Kushagra Bandil",
-    "19T7128_Lakshya Khare",
+    // "19T7128_Lakshya Khare",
     "19T7132_Mihir Jain",
     "19T7137_Pranjal Sahu",
     "19T7138_Pranshu Jain",
