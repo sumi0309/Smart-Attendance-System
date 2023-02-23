@@ -28,28 +28,33 @@ const toggleInputImage = () => {
 };
 
 const showInputPreview = (event) => {
-  const imageFile = event.target.files[0];
+  let n = event.target.files.length;
+  const imageFile = [];
+  for (let i = 0; i < n; i++) {
+    imageFile.push(event.target.files[i]);
+  }
   const reader = new FileReader();
+  for (let i = 0; i < n; i++) {
+    reader.readAsDataURL(imageFile[i]);
+    // console.log(imageFile[i]);
+    reader.addEventListener("load", () => {
+      inputPreview.src = reader.result;
+      execDetection(reader.result);
+      showOutputPreview(reader.result);
+    });
+    // toggleInputImage();
+    // toggleInputPreview();
 
-  reader.readAsDataURL(imageFile);
-  reader.addEventListener("load", () => {
-    inputPreview.src = reader.result;
-    execDetection(reader.result);
-    showOutputPreview(reader.result);
-  });
+    // inputPreview.style.display = "block";
+    // inputPreview.style.objectFit = "contain";
+    // inputPreview.style.borderRadius = "1em";
 
-  toggleInputImage();
-  toggleInputPreview();
-
-  inputPreview.style.display = "block";
-  inputPreview.style.objectFit = "contain";
-  inputPreview.style.borderRadius = "1em";
-
-  inputLabelTag.textContent = imageFile.name;
+    // inputLabelTag.textContent = imageFile.name;
+  }
 };
 
 uploadAction.addEventListener("change", (event) => {
-  attendanceList.innerHTML = "";
+  // attendanceList.innerHTML = "";
   outputLabelTag.textContent = "";
   showInputPreview(event);
 });

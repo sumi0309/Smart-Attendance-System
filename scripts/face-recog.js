@@ -49,8 +49,8 @@ const dataUrlToBlob = (imageDataUrl) => {
 };
 
 const showOutputPreview = (latestImage) => {
-  toggleOutputPreview();
-  toggleOutputImage();
+  // toggleOutputPreview();
+  // toggleOutputImage();
 
   outputPreview.src = latestImage;
   outputPreview.style.display = "inline-block";
@@ -60,6 +60,7 @@ const showOutputPreview = (latestImage) => {
 
 let image;
 let canvas;
+const sortedList = [];
 
 const execDetection = async (loadImage) => {
   if (loadImage === null) labelTag.textContent = "No Image Found";
@@ -91,35 +92,35 @@ const execDetection = async (loadImage) => {
       )
       .withFaceLandmarks()
       .withFaceDescriptors();
-    outputLabelTag.textContent = detections.length;
+    // outputLabelTag.textContent = detections.length;
     const resizeDetections = faceapi.resizeResults(detections, displaySize);
 
     const results = resizeDetections.map((d) =>
       faceMatcher.findBestMatch(d.descriptor)
     );
 
-    const sortedList = [];
-
     results.forEach((student) => {
-      sortedList.push(student.toString());
+      if (!sortedList.includes(student.toString())) {
+        sortedList.push(student.toString());
+      }
     });
 
     sortedList.sort();
 
-    results.forEach((result, i) => {
-      const box = resizeDetections[i].detection.box;
-      const drawBox = new faceapi.draw.DrawBox(box, {
-        label: result.toString(),
-      });
-      drawBox.draw(canvas);
-    });
+    // results.forEach((result, i) => {
+    //   const box = resizeDetections[i].detection.box;
+    //   const drawBox = new faceapi.draw.DrawBox(box, {
+    //     label: result.toString(),
+    //   });
+    //   drawBox.draw(canvas);
+    // });
     for (let i = 0; i < sortedList.length; i++) {
       var li = document.createElement("li");
       li.appendChild(document.createTextNode(sortedList[i]));
       attendanceList.appendChild(li);
     }
   }
-  outputPreviewContainer.append(canvas);
+  // outputPreviewContainer.append(canvas);
 };
 
 backdrop.addEventListener("click", () => {
@@ -174,7 +175,8 @@ function loadLabeledImages() {
     "19T7184_Nayan Bargal",
     "20T7182_Jayesh Mulchandani",
     "20T7184_Nisha Chilgar",
-    "19T7010_Anjali Phadke",
+    "19T7005_Anjali Phadke",
+    "007_Monu Bhaiya",
   ];
 
   return Promise.all(
