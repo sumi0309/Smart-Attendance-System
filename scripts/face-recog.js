@@ -34,7 +34,7 @@ const toggleModalSheet = () => {
   modalSheet.classList.toggle("visible");
 };
 
-const dataUrlToBlob = (imageDataUrl) => {
+const dataUrlToBlob = async (imageDataUrl) => {
   var byteString = atob(imageDataUrl.split(",")[1]);
   var mimeString = imageDataUrl.split(",")[0].split(":")[1].split(";")[0];
   var ab = new ArrayBuffer(byteString.length);
@@ -48,9 +48,9 @@ const dataUrlToBlob = (imageDataUrl) => {
   return blob;
 };
 
-const showOutputPreview = (latestImage) => {
-  // toggleOutputPreview();
-  // toggleOutputImage();
+const showOutputPreview = async (latestImage) => {
+  toggleOutputPreview();
+  toggleOutputImage();
 
   outputPreview.src = latestImage;
   outputPreview.style.display = "inline-block";
@@ -63,27 +63,29 @@ let canvas;
 const sortedList = [];
 
 const execDetection = async (loadImage) => {
-  if (loadImage === null) labelTag.textContent = "No Image Found";
+  if (loadImage === null) outputLabelTag.textContent = "No Image Found";
   else {
-    if (image) image.remove();
-    if (canvas) canvas.remove();
+    if (image) await image.remove();
+    if (canvas) await canvas.remove();
 
-    const imageBLob = dataUrlToBlob(loadImage);
-    image = await faceapi.bufferToImage(imageBLob);
-
-    canvas = faceapi.createCanvasFromMedia(image);
+    // const imageBLob = await dataUrlToBlob(loadImage);
+    image = await faceapi.bufferToImage(loadImage);
+    canvas = await faceapi.createCanvasFromMedia(image);
     outputImagePreview.style.justifyContent = "start";
     outputImagePreview.style.alignItems = "center";
     outputImagePreview.style.position = "relative";
 
     const labeledFaceDescriptors = await loadLabeledImages();
-    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.53);
+    const faceMatcher = await new faceapi.FaceMatcher(
+      labeledFaceDescriptors,
+      0.53
+    );
 
     const displaySize = {
       width: outputPreview.width,
       height: outputPreview.height,
     };
-    faceapi.matchDimensions(canvas, displaySize);
+    await faceapi.matchDimensions(canvas, displaySize);
 
     const detections = await faceapi
       .detectAllFaces(
@@ -93,13 +95,16 @@ const execDetection = async (loadImage) => {
       .withFaceLandmarks()
       .withFaceDescriptors();
     // outputLabelTag.textContent = detections.length;
-    const resizeDetections = faceapi.resizeResults(detections, displaySize);
+    const resizeDetections = await faceapi.resizeResults(
+      detections,
+      displaySize
+    );
 
-    const results = resizeDetections.map((d) =>
+    const results = await resizeDetections.map((d) =>
       faceMatcher.findBestMatch(d.descriptor)
     );
 
-    results.forEach((student) => {
+    await results.forEach((student) => {
       if (!sortedList.includes(student.toString())) {
         sortedList.push(student.toString());
       }
@@ -120,7 +125,10 @@ const execDetection = async (loadImage) => {
       attendanceList.appendChild(li);
     }
   }
-  // outputPreviewContainer.append(canvas);
+  outputPreviewContainer.append(canvas);
+  while (sortedList.length != 0) {
+    sortedList.pop();
+  }
 };
 
 backdrop.addEventListener("click", () => {

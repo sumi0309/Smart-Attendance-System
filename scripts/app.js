@@ -26,35 +26,45 @@ const toggleInputPreview = () => {
 const toggleInputImage = () => {
   inputPreview.classList.toggle("visible");
 };
+const imageFile = [];
 
-const showInputPreview = (event) => {
-  let n = event.target.files.length;
-  const imageFile = [];
-  for (let i = 0; i < n; i++) {
-    imageFile.push(event.target.files[i]);
-  }
-  const reader = new FileReader();
-  for (let i = 0; i < n; i++) {
-    reader.readAsDataURL(imageFile[i]);
-    // console.log(imageFile[i]);
-    reader.addEventListener("load", () => {
-      inputPreview.src = reader.result;
-      execDetection(reader.result);
-      showOutputPreview(reader.result);
-    });
-    // toggleInputImage();
-    // toggleInputPreview();
+// toggleInputImage();
+// toggleInputPreview();
 
-    // inputPreview.style.display = "block";
-    // inputPreview.style.objectFit = "contain";
-    // inputPreview.style.borderRadius = "1em";
+// inputPreview.style.display = "block";
+// inputPreview.style.objectFit = "contain";
+// inputPreview.style.borderRadius = "1em";
 
-    // inputLabelTag.textContent = imageFile.name;
-  }
-};
-
-uploadAction.addEventListener("change", (event) => {
+// inputLabelTag.textContent = imageFile.name;
+function removeDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+finalList = [];
+uploadAction.addEventListener("change", async (event) => {
   // attendanceList.innerHTML = "";
   outputLabelTag.textContent = "";
-  showInputPreview(event);
+  for (let i = 0; i < event.target.files.length; i++) {
+    imageFile.push(event.target.files[i]);
+  }
+  for (let i of imageFile) {
+    await showOutputPreview(i);
+    await execDetection(i);
+  }
+  const listElems = document.querySelector("#aL").childNodes;
+  for (let i = 0; i < listElems.length; i++) {
+    let string = listElems[i].innerText;
+    string = string.substring(0, string.indexOf("("));
+    finalList.push(string);
+  }
+  finalList = removeDuplicates(finalList);
+  finalList.sort();
+  document.querySelector("#aL").innerHTML = "";
+  for (let i = 0; i < finalList.length; i++) {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(finalList[i]));
+    attendanceList.appendChild(li);
+  }
+  alert(
+    "Processing Complete\n Click on the right button to get the attendance!"
+  );
 });
