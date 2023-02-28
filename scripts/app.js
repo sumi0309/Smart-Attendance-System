@@ -72,7 +72,6 @@ uploadAction.addEventListener("change", async (event) => {
     li.appendChild(document.createTextNode(finalList[i]));
     attendanceList.appendChild(li);
   }
-
   alert(
     "Processing Complete\n Click on the right button to get the attendance!"
   );
