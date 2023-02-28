@@ -26,7 +26,6 @@ const toggleInputPreview = () => {
 const toggleInputImage = () => {
   inputPreview.classList.toggle("visible");
 };
-const imageFile = [];
 
 // toggleInputImage();
 // toggleInputPreview();
@@ -36,12 +35,18 @@ const imageFile = [];
 // inputPreview.style.borderRadius = "1em";
 
 // inputLabelTag.textContent = imageFile.name;
-function removeDuplicates(arr) {
+async function removeDuplicates(arr) {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 }
+
+imageFile = [];
 finalList = [];
+
 uploadAction.addEventListener("change", async (event) => {
-  // attendanceList.innerHTML = "";
+  while (finalList.length !== 0) {
+    finalList.pop();
+  }
+  attendanceList.innerHTML = "";
   outputLabelTag.textContent = "";
   for (let i = 0; i < event.target.files.length; i++) {
     imageFile.push(event.target.files[i]);
@@ -50,15 +55,24 @@ uploadAction.addEventListener("change", async (event) => {
     await showOutputPreview(i);
     await execDetection(i);
   }
+  // const listElems = document.querySelector("#aL").childNodes;
+  // for (let i = 0; i < listElems.length; i++) {
+  //   let string = listElems[i].innerText;
+  //   string = string.substring(0, string.indexOf("("));
+  //   finalList.push(string);
+  // }
+
   const listElems = document.querySelector("#aL").childNodes;
   for (let i = 0; i < listElems.length; i++) {
     let string = listElems[i].innerText;
     string = string.substring(0, string.indexOf("("));
     finalList.push(string);
   }
-  finalList = removeDuplicates(finalList);
+
   finalList.sort();
-  document.querySelector("#aL").innerHTML = "";
+
+  finalList = await removeDuplicates(finalList);
+  attendanceList.innerHTML = "";
   for (let i = 0; i < finalList.length; i++) {
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(finalList[i]));

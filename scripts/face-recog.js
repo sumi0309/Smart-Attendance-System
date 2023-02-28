@@ -63,6 +63,10 @@ let canvas;
 const sortedList = [];
 
 const execDetection = async (loadImage) => {
+  while (sortedList.length !== 0) {
+    sortedList.pop();
+  }
+  attendanceList.innerHTML = "";
   if (loadImage === null) outputLabelTag.textContent = "No Image Found";
   else {
     if (image) await image.remove();
@@ -105,9 +109,7 @@ const execDetection = async (loadImage) => {
     );
 
     await results.forEach((student) => {
-      if (!sortedList.includes(student.toString())) {
-        sortedList.push(student.toString());
-      }
+      sortedList.push(student.toString());
     });
 
     sortedList.sort();
@@ -125,10 +127,7 @@ const execDetection = async (loadImage) => {
       attendanceList.appendChild(li);
     }
   }
-  outputPreviewContainer.append(canvas);
-  while (sortedList.length != 0) {
-    sortedList.pop();
-  }
+  // outputPreviewContainer.append(canvas);
 };
 
 backdrop.addEventListener("click", () => {
