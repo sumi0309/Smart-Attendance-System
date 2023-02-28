@@ -27,6 +27,8 @@ const toggleInputImage = () => {
   inputPreview.classList.toggle("visible");
 };
 
+const imageFile = [];
+
 // toggleInputImage();
 // toggleInputPreview();
 
@@ -38,46 +40,57 @@ const toggleInputImage = () => {
 async function removeDuplicates(arr) {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 }
-
-imageFile = [];
-finalList = [];
-
+var finalList = [];
 uploadAction.addEventListener("change", async (event) => {
-  while (finalList.length !== 0) {
-    finalList.pop();
+  while (imageFile.length != 0) {
+    imageFile.pop();
   }
-  attendanceList.innerHTML = "";
   outputLabelTag.textContent = "";
   for (let i = 0; i < event.target.files.length; i++) {
     imageFile.push(event.target.files[i]);
   }
-  for (let i of imageFile) {
-    await showOutputPreview(i);
-    await execDetection(i);
-  }
-  // const listElems = document.querySelector("#aL").childNodes;
-  // for (let i = 0; i < listElems.length; i++) {
-  //   let string = listElems[i].innerText;
-  //   string = string.substring(0, string.indexOf("("));
-  //   finalList.push(string);
-  // }
+  if (imageFile.length === 1) {
+    while (finalList.length != 0) {
+      finalList.pop();
+    }
+    attendanceList.innerHTML = "";
+    await showOutputPreview(imageFile[0]);
+    await execDetection(imageFile[0]);
+    for (let i = 0; i < sortedList.length; i++) {
+      let string = sortedList[i];
+      string = string.substring(0, string.indexOf("("));
+      finalList.push(string);
+    }
+    // const listElems = document.querySelector("#aL").childNodes;
 
-  const listElems = document.querySelector("#aL").childNodes;
-  for (let i = 0; i < listElems.length; i++) {
-    let string = listElems[i].innerText;
-    string = string.substring(0, string.indexOf("("));
-    finalList.push(string);
+    finalList = await removeDuplicates(finalList);
+    await finalList.sort();
+    for (let i = 0; i < finalList.length; i++) {
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(finalList[i]));
+      attendanceList.appendChild(li);
+    }
+  } else {
+    for (let im of imageFile) {
+      await showOutputPreview(im);
+      await execDetection(im);
+      for (let i = 0; i < sortedList.length; i++) {
+        let string = sortedList[i];
+        string = string.substring(0, string.indexOf("("));
+        finalList.push(string);
+      }
+    }
+    // const listElems = document.querySelector("#aL").childNodes;
+
+    finalList = await removeDuplicates(finalList);
+    await finalList.sort();
+    for (let i = 0; i < finalList.length; i++) {
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(finalList[i]));
+      attendanceList.appendChild(li);
+    }
   }
 
-  finalList.sort();
-
-  finalList = await removeDuplicates(finalList);
-  attendanceList.innerHTML = "";
-  for (let i = 0; i < finalList.length; i++) {
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode(finalList[i]));
-    attendanceList.appendChild(li);
-  }
   alert(
     "Processing Complete\n Click on the right button to get the attendance!"
   );

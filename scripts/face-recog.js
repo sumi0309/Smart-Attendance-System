@@ -63,10 +63,9 @@ let canvas;
 const sortedList = [];
 
 const execDetection = async (loadImage) => {
-  while (sortedList.length !== 0) {
+  while (sortedList.length != 0) {
     sortedList.pop();
   }
-  attendanceList.innerHTML = "";
   if (loadImage === null) outputLabelTag.textContent = "No Image Found";
   else {
     if (image) await image.remove();
@@ -112,8 +111,6 @@ const execDetection = async (loadImage) => {
       sortedList.push(student.toString());
     });
 
-    sortedList.sort();
-
     // results.forEach((result, i) => {
     //   const box = resizeDetections[i].detection.box;
     //   const drawBox = new faceapi.draw.DrawBox(box, {
@@ -121,13 +118,13 @@ const execDetection = async (loadImage) => {
     //   });
     //   drawBox.draw(canvas);
     // });
-    for (let i = 0; i < sortedList.length; i++) {
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(sortedList[i]));
-      attendanceList.appendChild(li);
-    }
+    // for (let i = 0; i < sortedList.length; i++) {
+    //   var li = document.createElement("li");
+    //   li.appendChild(document.createTextNode(sortedList[i]));
+    //   attendanceList.appendChild(li);
+    // }
   }
-  // outputPreviewContainer.append(canvas);
+  outputPreviewContainer.append(canvas);
 };
 
 backdrop.addEventListener("click", () => {
