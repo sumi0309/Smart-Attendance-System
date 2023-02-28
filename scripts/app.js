@@ -49,46 +49,28 @@ uploadAction.addEventListener("change", async (event) => {
   for (let i = 0; i < event.target.files.length; i++) {
     imageFile.push(event.target.files[i]);
   }
-  if (imageFile.length === 1) {
-    while (finalList.length != 0) {
-      finalList.pop();
-    }
-    attendanceList.innerHTML = "";
-    await showOutputPreview(imageFile[0]);
-    await execDetection(imageFile[0]);
+
+  while (finalList.length != 0) {
+    finalList.pop();
+  }
+  attendanceList.innerHTML = "";
+  for (let im of imageFile) {
+    await showOutputPreview(im);
+    await execDetection(im);
     for (let i = 0; i < sortedList.length; i++) {
       let string = sortedList[i];
       string = string.substring(0, string.indexOf("("));
       finalList.push(string);
     }
-    // const listElems = document.querySelector("#aL").childNodes;
+  }
+  // const listElems = document.querySelector("#aL").childNodes;
 
-    finalList = await removeDuplicates(finalList);
-    await finalList.sort();
-    for (let i = 0; i < finalList.length; i++) {
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(finalList[i]));
-      attendanceList.appendChild(li);
-    }
-  } else {
-    for (let im of imageFile) {
-      await showOutputPreview(im);
-      await execDetection(im);
-      for (let i = 0; i < sortedList.length; i++) {
-        let string = sortedList[i];
-        string = string.substring(0, string.indexOf("("));
-        finalList.push(string);
-      }
-    }
-    // const listElems = document.querySelector("#aL").childNodes;
-
-    finalList = await removeDuplicates(finalList);
-    await finalList.sort();
-    for (let i = 0; i < finalList.length; i++) {
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(finalList[i]));
-      attendanceList.appendChild(li);
-    }
+  finalList = await removeDuplicates(finalList);
+  await finalList.sort();
+  for (let i = 0; i < finalList.length; i++) {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(finalList[i]));
+    attendanceList.appendChild(li);
   }
 
   alert(
