@@ -1,4 +1,5 @@
 <html lang="en">
+<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -68,4 +69,88 @@
 			<ol id="aL"></ol>
 		</div>
 	</body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAS - E&TC</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="styles/app.css" />
+    <script defer src="./scripts/face-api.min.js"></script>
+    <script defer src="./scripts/data-loader.js"></script>
+    <script defer src="./scripts/app.js"></script>
+    <script defer src="./scripts/face-recog.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="backdrop"></div>
+    <div class="modal-sheet">
+      <div class="modal-card"><i id="warning-icon" class="material-icons">warning</i> Upload Image for Attendance</div>
+    </div>
+    <div id="backdrop2"></div>
+    <div class="modal-sheet2">
+      <div class="modal-card" style="text-align: center; font-size:large;"><i id="success-icon" class="material-icons">cloud_done</i> Click on the attendance button to see the list!</div>
+    </div>
+    <header class="main-header">
+      <div>
+        <img
+          id="header-logo"
+          src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png?20191204131429"
+        />
+      </div>
+      <div>
+        <h3 id="header-text" class="head1">Smart Attendance Portal <br /></h3>
+        <h4 class="head2">IET-DAVV &nbsp E&TC</h4>
+      </div>
+      <div>
+        <button id="header-button" onclick="window.location='app.html';">
+          <i class="material-icons" id="headerBtn">refresh</i>
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="main-flex-1">
+        <div>
+          <h5 class="imageHeads">---------- Uploaded Images ----------</h5>
+        </div>
+        <div class="image-input">
+          <div class="input-preview-container">
+            <img id="input-preview" />
+          </div>
+          <label id="input-preview-label" for="preview">
+            <i class="material-icons" id="image-icon-1">image</i>
+          </label>
+          <input multiple id="upload" type="file" accept="image/png, image/jpg, image/jpeg, image/heic" />
+        </div>
+        <div>
+          <h5 class="imageHeads">--------------- Results ---------------</h5>
+        </div>
+        <div class="image-output">
+          <div class="output-preview-container">
+            <div class="holder">
+              <img id="output-preview" />
+            </div>
+          </div>
+          <label id="output-preview-label" for="preview">
+            <i class="material-icons" id="image-icon-2">image</i>
+          </label>
+        </div>
+      </div>
+      <div class="main-flex-2">
+        <button id="upload-button">
+          <label for="upload" class="material-icons">cloud_upload</label>
+        </button>
+        <button id="attendance-button" style="display: inline-block">
+          <i class="material-icons">groups</i>
+        </button>
+      </div>
+    </main>
+    <div id="aLContainer" class="main-flex-3">
+      <div class="oL"><h3 class="attendanceHeading">Attendance list</h3>
+        <ol id="aL"></ol>
+      </div>
+    </div>
+  </body>
+>>>>>>> main
 </html>
