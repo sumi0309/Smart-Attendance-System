@@ -259,6 +259,6 @@ body {
 
 .attendanceHeading{
   text-align: center;
-    padding-bottom: 2%;
+    padding: 1.5% 1.5% 0.5% 1.5%;
     color: #2e7c3c;
 }
