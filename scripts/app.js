@@ -1,10 +1,14 @@
 const inputImagePreview = document.querySelector(".image-input");
-const inputPreviewContainer = document.querySelector(".input-preview-container");
+const inputPreviewContainer = document.querySelector(
+  ".input-preview-container"
+);
 const attendanceBtn = document.querySelector("#upload-button");
 const attendanceList = document.getElementById("aL");
 const inputLabelTag = document.querySelector("#input-preview-label");
 const inputPreview = document.querySelector("#input-preview");
 const uploadAction = document.querySelector("#upload");
+const backdrop2 = document.querySelector("#backdrop2");
+const modalSheet2 = document.querySelector(".modal-sheet2");
 
 Promise.all([
   faceapi.nets.faceRecognitionNet.loadFromUri("../models"),
@@ -12,6 +16,19 @@ Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("../models"),
   faceapi.nets.mtcnn.loadFromUri("../models"),
 ]);
+
+const toggleBackdrop2 = () => {
+  backdrop2.classList.toggle("visible");
+};
+
+const toggleModalSheet2 = () => {
+  modalSheet2.classList.toggle("visible");
+};
+
+backdrop2.addEventListener("click", () => {
+  toggleBackdrop2();
+  toggleModalSheet2();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   localStorage.clear();
@@ -82,10 +99,6 @@ uploadAction.addEventListener("change", async (event) => {
     i.style.bottom = `${i.height + 30}`;
   }
 
-  // for (let i of holders) {
-  //   i.style.height = `${i.firstChild.height + 30}`;
-  // }
-
   const listElems = document.querySelector("#aL").children;
   for (let i = 0; i < listElems.length; i++) {
     let string = listElems[i].innerText;
@@ -102,5 +115,6 @@ uploadAction.addEventListener("change", async (event) => {
     li.appendChild(document.createTextNode(finalList[i]));
     attendanceList.appendChild(li);
   }
-  // alert("Processing Complete\nClick on the attendance button to get the attendance!");
+  toggleBackdrop2();
+  toggleModalSheet2();
 });

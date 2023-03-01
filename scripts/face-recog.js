@@ -1,5 +1,7 @@
 const outputImagePreview = document.querySelector(".image-output");
-const outputPreviewContainer = document.querySelector(".output-preview-container");
+const outputPreviewContainer = document.querySelector(
+  ".output-preview-container"
+);
 const outputLabelTag = document.querySelector("#output-preview-label");
 const outputPreview = document.querySelectorAll("#output-preview");
 const attendanceButton = document.getElementById("attendance-button");
@@ -37,6 +39,7 @@ const drawBoxes = async () => {};
 let image;
 let canvas;
 const sortedList = [];
+var totalOutputHeight = 0;
 
 const execDetection = async (loadImage, index) => {
   if (loadImage === null) outputLabelTag.textContent = "No Image Found";
@@ -63,6 +66,13 @@ const execDetection = async (loadImage, index) => {
     image.style.borderRadius = "1em";
     document.querySelector(`#holder${index}`).appendChild(image);
 
+    // let imgH = image.height;
+    // document
+    //   .querySelector(`#holder${index}`)
+    //   .setAttribute("style", `height:${imgH + 30};`);
+
+    // totalOutputHeight += imgH + 30;
+
     imageLabel.setAttribute("id", "output-preview-label");
     imageLabel.textContent = `output_${loadImage.name}`;
     imageLabel.style.textAlign = "center";
@@ -76,16 +86,24 @@ const execDetection = async (loadImage, index) => {
       height: document.querySelectorAll("#output-preview")[index].height,
     };
     await faceapi.matchDimensions(canvas, displaySize);
-    console.log(displaySize);
+    // console.log(displaySize);
 
     const detections = await faceapi
-      .detectAllFaces(image, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.33 }))
+      .detectAllFaces(
+        image,
+        new faceapi.SsdMobilenetv1Options({ minConfidence: 0.33 })
+      )
       .withFaceLandmarks()
       .withFaceDescriptors();
-    const resizeDetections = await faceapi.resizeResults(detections, displaySize);
-    const results = await resizeDetections.map((d) => faceMatcher.findBestMatch(d.descriptor));
-    console.log(resizeDetections);
-    console.log(results);
+    const resizeDetections = await faceapi.resizeResults(
+      detections,
+      displaySize
+    );
+    const results = await resizeDetections.map((d) =>
+      faceMatcher.findBestMatch(d.descriptor)
+    );
+    // console.log(resizeDetections);
+    // console.log(results);
 
     await results.forEach((student) => {
       sortedList.push(student.toString());
