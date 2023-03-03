@@ -115,23 +115,27 @@ uploadAction.addEventListener("change", async (event) => {
     li.appendChild(document.createTextNode(finalList[i]));
     attendanceList.appendChild(li);
   }
+
+  window.scrollTo(0, 0);
+
   toggleBackdrop2();
   toggleModalSheet2();
 });
 
 const downloadFile = () => {
   if (attendanceList.innerText) {
+    let string2 = prompt("Enter SUBJECT, BRANCH : ", "subject_branch");
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`;
-    let string = currentDate;
+    let string = string2 + "_" + currentDate;
     const link = document.createElement("a");
     const content = document.querySelector("#aL").innerText;
     const file = new Blob([content], { type: "text/plain" });
     link.href = URL.createObjectURL(file);
-    link.download = "Attendance of : " + string + " ";
+    link.download = string + " ";
     link.click();
     URL.revokeObjectURL(link.href);
   } else {
