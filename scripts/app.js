@@ -118,3 +118,28 @@ uploadAction.addEventListener("change", async (event) => {
   toggleBackdrop2();
   toggleModalSheet2();
 });
+
+const downloadFile = () => {
+  if (attendanceList.innerText) {
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    let string = currentDate;
+    const link = document.createElement("a");
+    const content = document.querySelector("#aL").innerText;
+    const file = new Blob([content], { type: "text/plain" });
+    link.href = URL.createObjectURL(file);
+    link.download = "Attendance of : " + string + " ";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  } else {
+    toggleBackdrop();
+    toggleModalSheet();
+  }
+};
+
+document.querySelector("#textFileBtn").addEventListener("click", () => {
+  downloadFile();
+});

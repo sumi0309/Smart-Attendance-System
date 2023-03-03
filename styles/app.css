@@ -111,7 +111,7 @@ body {
 
 .main-flex-1,
 .main-flex-3.visible {
-  padding: 1.5%;
+  padding: 4% 1.5% 2% 1.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,3 +262,19 @@ body {
     padding: 1.5% 1.5% 0.5% 1.5%;
     color: #2e7c3c;
 }
+
+.centerF{
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 10%;
+}
+.centerF button{
+  width: 40%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
+  background-color: rgba(46, 108, 54, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
+}
+
