@@ -42,27 +42,6 @@ const toggleInputImage = () => {
   inputPreview.classList.toggle("visible");
 };
 
-<<<<<<< HEAD
-const imageFile = [];
-
-// toggleInputImage();
-// toggleInputPreview();
-
-// inputPreview.style.display = "block";
-// inputPreview.style.objectFit = "contain";
-// inputPreview.style.borderRadius = "1em";
-
-// inputLabelTag.textContent = imageFile.name;
-async function removeDuplicates(arr) {
-  return arr.filter((item, index) => arr.indexOf(item) === index);
-}
-var finalList = [];
-uploadAction.addEventListener("change", async (event) => {
-  while (imageFile.length != 0) {
-    imageFile.pop();
-  }
-  outputLabelTag.textContent = "";
-=======
 const removeDuplicates = async (arr) => {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 };
@@ -81,30 +60,10 @@ uploadAction.addEventListener("change", async (event) => {
   if (canvas) await canvas.remove();
   if (image) await image.remove();
 
->>>>>>> main
   for (let i = 0; i < event.target.files.length; i++) {
     imageFile.push(event.target.files[i]);
   }
 
-<<<<<<< HEAD
-  while (finalList.length != 0) {
-    finalList.pop();
-  }
-  attendanceList.innerHTML = "";
-  for (let im of imageFile) {
-    await showOutputPreview(im);
-    await execDetection(im);
-    for (let i = 0; i < sortedList.length; i++) {
-      let string = sortedList[i];
-      string = string.substring(0, string.indexOf("("));
-      finalList.push(string);
-    }
-  }
-  // const listElems = document.querySelector("#aL").childNodes;
-
-  finalList = await removeDuplicates(finalList);
-  await finalList.sort();
-=======
   for (let i of imageFile) {
     const childImage = await faceapi.bufferToImage(i);
     const childImageLabel = document.createElement("p");
@@ -151,18 +110,60 @@ uploadAction.addEventListener("change", async (event) => {
   document.querySelector("#aL").innerHTML = "";
   finalList = await removeDuplicates(finalList);
 
->>>>>>> main
   for (let i = 0; i < finalList.length; i++) {
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(finalList[i]));
     attendanceList.appendChild(li);
   }
-<<<<<<< HEAD
-  alert(
-    "Processing Complete\n Click on the right button to get the attendance!"
-  );
-=======
+
+  window.scrollTo(0, 0);
+
   toggleBackdrop2();
   toggleModalSheet2();
->>>>>>> main
+});
+
+var monthName = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const downloadFile = () => {
+  if (attendanceList.innerText) {
+    let string2 = prompt("Enter SUBJECT, BRANCH : ", "subject_branch");
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let currentDate = `${day}-${monthName[month]}-${year}`;
+    let string;
+    if (string2) {
+      string = string2 + "_" + currentDate;
+    } else {
+      string = currentDate;
+    }
+    const link = document.createElement("a");
+    const content = document.querySelector("#aL").innerText;
+    const file = new Blob([content], { type: "text/plain" });
+    link.href = URL.createObjectURL(file);
+    link.download = string + " ";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  } else {
+    toggleBackdrop();
+    toggleModalSheet();
+  }
+};
+
+document.querySelector("#textFileBtn").addEventListener("click", () => {
+  downloadFile();
 });
