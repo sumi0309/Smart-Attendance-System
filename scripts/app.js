@@ -122,15 +122,35 @@ uploadAction.addEventListener("change", async (event) => {
   toggleModalSheet2();
 });
 
+var monthName = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 const downloadFile = () => {
   if (attendanceList.innerText) {
     let string2 = prompt("Enter SUBJECT, BRANCH : ", "subject_branch");
     const date = new Date();
     let day = date.getDate();
-    let month = date.getMonth() + 1;
+    let month = date.getMonth();
     let year = date.getFullYear();
-    let currentDate = `${day}-${month}-${year}`;
-    let string = string2 + "_" + currentDate;
+    let currentDate = `${day}-${monthName[month]}-${year}`;
+    let string;
+    if (string2) {
+      string = string2 + "_" + currentDate;
+    } else {
+      string = currentDate;
+    }
     const link = document.createElement("a");
     const content = document.querySelector("#aL").innerText;
     const file = new Blob([content], { type: "text/plain" });
